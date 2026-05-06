@@ -8,6 +8,7 @@
     "IModularItemMixin"
   ],
   "client": [
+    "WorkbenchScreenMixin"
   ],
   "injectors": {
     "defaultRequire": 1
