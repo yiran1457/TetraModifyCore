@@ -3,8 +3,11 @@ package net.tetra.modify.wrapper;
 import com.google.common.collect.Lists;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
@@ -13,8 +16,10 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.Nullable;
 import se.mickelus.tetra.ConfigHandler;
+import se.mickelus.tetra.TetraMod;
 import se.mickelus.tetra.Tooltips;
 import se.mickelus.tetra.items.modular.IModularItem;
+import se.mickelus.tetra.module.improvement.HonePacket;
 
 import java.util.Arrays;
 import java.util.List;
@@ -24,6 +29,30 @@ public class IModularItemWrapper {
     @SuppressWarnings("unchecked")
     public static <T extends Item & IModularItem> T cast(Item item) {
         return (T) item;
+    }
+
+    public static void tickHoningProgression(LivingEntity entity, ItemStack itemStack, int multiplier) {
+        var item = IModularItemWrapper.cast(itemStack.getItem());
+        if (ConfigHandler.moduleProgression.get() && item.canGainHoneProgress(itemStack)) {
+            CompoundTag tag = itemStack.getOrCreateTag();
+            if (!IModularItem.isHoneable(itemStack)) {
+                int honingProgress;
+                if (tag.contains("honing_progress")) {
+                    honingProgress = tag.getInt("honing_progress");
+                } else {
+                    honingProgress = item.getHoningLimit(itemStack);
+                }
+
+                honingProgress -= multiplier;
+                tag.putInt("honing_progress", honingProgress);
+                if (honingProgress <= 0 && !IModularItem.isHoneable(itemStack)) {
+                    tag.putBoolean("honing_available", true);
+                    if (entity instanceof ServerPlayer serverPlayer) {
+                        TetraMod.packetHandler.sendTo(new HonePacket(itemStack), serverPlayer);
+                    }
+                }
+            }
+        }
     }
 
     @OnlyIn(Dist.CLIENT)
