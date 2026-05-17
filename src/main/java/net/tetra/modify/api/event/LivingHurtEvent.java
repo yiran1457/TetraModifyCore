@@ -62,8 +62,9 @@ public class LivingHurtEvent extends LivingEvent {
     }
 
     public float getResultAmount() {
-        return this.baseAmount * this.multiplyBaseAmount * this.multiplyTotalAmount + this.extraAmount;
+        return (this.originalAmount + this.baseAmount) * this.multiplyBaseAmount * this.multiplyTotalAmount + this.extraAmount;
     }
+
     public static class Pre extends LivingHurtEvent {
 
         public Pre(LivingEntity entity, DamageSource source, float amount) {

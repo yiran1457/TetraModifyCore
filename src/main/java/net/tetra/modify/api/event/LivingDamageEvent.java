@@ -61,7 +61,7 @@ public class LivingDamageEvent extends LivingEvent {
     }
 
     public float getResultAmount() {
-        return this.baseAmount * this.multiplyBaseAmount * this.multiplyTotalAmount + this.extraAmount;
+        return (this.originalAmount + this.baseAmount) * this.multiplyBaseAmount * this.multiplyTotalAmount + this.extraAmount;
     }
 
     public static class Pre extends LivingDamageEvent {
