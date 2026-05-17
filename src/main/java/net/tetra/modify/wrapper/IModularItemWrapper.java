@@ -56,9 +56,9 @@ public class IModularItemWrapper {
     }
 
     @OnlyIn(Dist.CLIENT)
-    public static class Client{
+    public static class Client {
 
-        public static List<Component> getTooltip(ItemStack itemStack, @Nullable Level world, TooltipFlag advanced){
+        public static List<Component> getTooltip(ItemStack itemStack, @Nullable Level world, TooltipFlag advanced) {
             List<Component> tooltip = Lists.newArrayList();
             var item = IModularItemWrapper.cast(itemStack.getItem());
             if (item.isBroken(itemStack)) {
@@ -94,18 +94,7 @@ public class IModularItemWrapper {
                         .forEach(tooltip::add);
 
                 // honing tooltip
-                if (ConfigHandler.moduleProgression.get() && item.canGainHoneProgress(itemStack)) {
-                    if (IModularItem.isHoneable(itemStack)) {
-                        tooltip.add(Component.literal(" > ").withStyle(ChatFormatting.AQUA)
-                                .append(Component.translatable("tetra.hone.available").setStyle(Style.EMPTY.applyFormat(ChatFormatting.GRAY))));
-                    } else {
-                        int progress = item.getHoningProgress(itemStack);
-                        int base = item.getHoningLimit(itemStack);
-                        String percentage = String.format("%.0f", 100f * (base - progress) / base);
-                        tooltip.add(Component.literal(" > ").withStyle(ChatFormatting.DARK_AQUA)
-                                .append(Component.translatable("tetra.hone.progress", base - progress, base, percentage).withStyle(ChatFormatting.GRAY)));
-                    }
-                }
+                addHoningTooltip(item, itemStack, tooltip);
             } else {
                 ItemStack.appendEnchantmentNames(tooltip, itemStack.getEnchantmentTags());
 
@@ -114,6 +103,22 @@ public class IModularItemWrapper {
 
             return tooltip;
         }
+
+        public static void addHoningTooltip(IModularItem item, ItemStack itemStack, List<Component> tooltip) {
+            if (ConfigHandler.moduleProgression.get() && item.canGainHoneProgress(itemStack)) {
+                if (IModularItem.isHoneable(itemStack)) {
+                    tooltip.add(Component.literal(" > ").withStyle(ChatFormatting.AQUA)
+                            .append(Component.translatable("tetra.hone.available").setStyle(Style.EMPTY.applyFormat(ChatFormatting.GRAY))));
+                } else {
+                    int progress = item.getHoningProgress(itemStack);
+                    int base = item.getHoningLimit(itemStack);
+                    String percentage = String.format("%.0f", 100f * (base - progress) / base);
+                    tooltip.add(Component.literal(" > ").withStyle(ChatFormatting.DARK_AQUA)
+                            .append(Component.translatable("tetra.hone.progress", base - progress, base, percentage).withStyle(ChatFormatting.GRAY)));
+                }
+            }
+        }
+
     }
 
 }
