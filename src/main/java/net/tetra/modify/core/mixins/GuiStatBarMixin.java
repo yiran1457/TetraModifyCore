@@ -4,6 +4,7 @@ import net.minecraft.client.resources.language.I18n;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.tetra.modify.core.MixinConfig;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -21,7 +22,7 @@ import java.util.concurrent.Executors;
 
 @Mixin(value = GuiStatBar.class, remap = false)
 public abstract class GuiStatBarMixin extends GuiStatBase {
-    private static ExecutorService executor = Executors.newFixedThreadPool(2);
+    private static ExecutorService executor = Executors.newFixedThreadPool(MixinConfig.getInstance().thread);
 
     @Shadow
     protected String labelKey;
