@@ -11,7 +11,8 @@
     "MaterialImprovementDataMixin",
     "MaterialVariantDataMixin",
     "PlayerMixin",
-    "VariantDataMixin"
+    "VariantDataMixin",
+    "gui.element.GuiElementMixin"
   ],
   "client": [
     "GuiStatBarMixin",
