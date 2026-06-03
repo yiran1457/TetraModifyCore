@@ -8,15 +8,16 @@
   "mixins": [
     "IModularItemMixin",
     "LivingEntityMixin",
-    "MaterialImprovementDataMixin",
-    "MaterialVariantDataMixin",
     "PlayerMixin",
-    "VariantDataMixin",
+    "data.MaterialImprovementDataMixin",
+    "data.MaterialVariantDataMixin",
+    "data.VariantDataMixin",
     "gui.element.GuiElementMixin"
   ],
   "client": [
     "GuiStatBarMixin",
-    "WorkbenchScreenMixin"
+    "gui.WorkbenchScreenMixin",
+    "toolbelt.ToolbeltScreenMixin"
   ],
   "injectors": {
     "defaultRequire": 1

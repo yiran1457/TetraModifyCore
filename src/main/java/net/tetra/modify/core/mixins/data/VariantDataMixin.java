@@ -1,4 +1,4 @@
-package net.tetra.modify.core.mixins;
+package net.tetra.modify.core.mixins.data;
 
 import net.tetra.modify.core.IMaterialInfoProvider;
 import org.jetbrains.annotations.Nullable;

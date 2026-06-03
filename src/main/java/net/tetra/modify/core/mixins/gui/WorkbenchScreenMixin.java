@@ -1,4 +1,4 @@
-package net.tetra.modify.core.mixins;
+package net.tetra.modify.core.mixins.gui;
 
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
