@@ -22,7 +22,7 @@ public abstract class ToolbeltScreenMixin extends AbstractContainerScreen<Toolbe
 
     @Inject(method = "slotClicked", at = @At("HEAD"), cancellable = true)
     private void tmc$slotClicked(Slot slot, int slotIndex, int barIndex, ClickType clickType, CallbackInfo ci) {
-        if (!(slot instanceof DisabledSlot || (clickType == ClickType.SWAP && tmc$getSlotAt(barIndex) instanceof DisabledSlot))) {
+        if (!(slot instanceof DisabledSlot || (clickType == ClickType.SWAP && (barIndex == 40 || tmc$getSlotAt(barIndex) instanceof DisabledSlot)))) {
             super.slotClicked(slot, slotIndex, barIndex, clickType);
         }
         ci.cancel();
