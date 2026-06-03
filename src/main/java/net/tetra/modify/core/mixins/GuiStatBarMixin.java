@@ -87,9 +87,7 @@ public abstract class GuiStatBarMixin extends GuiStatBase {
         }
 
         this.updateValue(value, diffValue);
-        executor.execute(() -> {
-            this.updateIndicators(player, currentStack, previewStack, slot, improvement);
-        });
+        this.updateIndicators(player, currentStack, previewStack, slot, improvement);
         ci.cancel();
     }
 }
