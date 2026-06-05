@@ -12,7 +12,9 @@
     "data.MaterialImprovementDataMixin",
     "data.MaterialVariantDataMixin",
     "data.VariantDataMixin",
-    "gui.element.GuiElementMixin"
+    "gui.element.GuiElementMixin",
+    "modular.ModularBowItemMixin",
+    "modular.ModularCrossbowItemMixin"
   ],
   "client": [
     "GuiStatBarMixin",

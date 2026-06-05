@@ -26,6 +26,9 @@ public class MixinConfigPlugin implements IMixinConfigPlugin {
         if (config.thread == 0 && mixinClassName.endsWith("GuiStatBarMixin")) {
             return false;
         }
+        if (!config.bowModify) {
+            return !mixinClassName.endsWith("ModularBowItem") && !mixinClassName.endsWith("ModularCrossbowItem");
+        }
         return true;
     }
 

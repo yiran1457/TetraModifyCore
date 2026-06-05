@@ -13,13 +13,16 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 
 public class MixinConfig {
-    public static int nowVersion = 1;
+    public static int nowVersion = 2;
     public static Gson GSON = new GsonBuilder().create();
     public static Path configPath = FMLPaths.CONFIGDIR.get().resolve("TetraModifyCoreMixinConfig.json");
     private static MixinConfig instance;
+
     public int version = nowVersion;
     public String thread_desc = "设定statBar多线程更新的线程数,设置为0关闭多线程优化";
     public int thread = 0;
+    public String bowModify_desc = "是否开启对弓弩的修改";
+    public boolean bowModify = true;
 
     public static MixinConfig getInstance() {
         if (instance == null) {
