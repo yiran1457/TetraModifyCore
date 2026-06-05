@@ -18,6 +18,7 @@
   ],
   "client": [
     "GuiStatBarMixin",
+    "client.HoloItemsGuiMixin",
     "gui.WorkbenchScreenMixin",
     "toolbelt.ToolbeltScreenMixin"
   ],
