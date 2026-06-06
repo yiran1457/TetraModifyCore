@@ -6,6 +6,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -35,5 +36,9 @@ public class TetraModifyCore {
         IEventBus gameBus = MinecraftForge.EVENT_BUS;
         modBus.register(ScrollDataManager.class);
         creativeTabs.register(modBus);
+        gameBus.addListener(TetraModifyCore::z);
+    }
+    public static void z(TickEvent.ClientTickEvent event){
+        var z = Component.translatable("item.tetra.scroll.omniscient.description").getString();
     }
 }

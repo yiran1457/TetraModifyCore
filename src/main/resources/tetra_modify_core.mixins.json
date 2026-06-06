@@ -9,6 +9,8 @@
     "IModularItemMixin",
     "LivingEntityMixin",
     "PlayerMixin",
+    "client.ForgeHooksClientMixin",
+    "data.LockedRequirementMixin",
     "data.MaterialImprovementDataMixin",
     "data.MaterialVariantDataMixin",
     "data.VariantDataMixin",

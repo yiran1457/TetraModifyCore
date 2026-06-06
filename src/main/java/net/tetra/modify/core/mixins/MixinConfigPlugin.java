@@ -29,6 +29,9 @@ public class MixinConfigPlugin implements IMixinConfigPlugin {
         if (!config.bowModify) {
             return !mixinClassName.endsWith("ModularBowItem") && !mixinClassName.endsWith("ModularCrossbowItem");
         }
+        if (!config.alwaysNeedsWrapTooltip) {
+            return !mixinClassName.endsWith("ForgeHooksClientMixin");
+        }
         return true;
     }
 

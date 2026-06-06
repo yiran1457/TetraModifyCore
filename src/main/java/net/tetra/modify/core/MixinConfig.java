@@ -13,7 +13,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 
 public class MixinConfig {
-    public static int nowVersion = 2;
+    public static int nowVersion = 3;
     public static Gson GSON = new GsonBuilder().create();
     public static Path configPath = FMLPaths.CONFIGDIR.get().resolve("TetraModifyCoreMixinConfig.json");
     private static MixinConfig instance;
@@ -23,6 +23,8 @@ public class MixinConfig {
     public int thread = 0;
     public String bowModify_desc = "是否开启对弓弩的修改";
     public boolean bowModify = true;
+    public String alwaysNeedsWrapTooltip_desc = "默认启用tooltip渲染的换行";
+    public boolean alwaysNeedsWrapTooltip = true;
 
     public static MixinConfig getInstance() {
         if (instance == null) {

@@ -1,3 +1,6 @@
 {
-  "tetra_modify_core.scrollGroup": "Scroll Items"
+  "tetra_modify_core.scrollGroup": "Scroll Items",
+  "item.tetra.scroll.omniscient.name": "Chapter §e§k?§r §6Scroll of Omniscience§r",
+  "item.tetra.scroll.omniscient.description": "Allows you to use all scroll techniques\n§4§mMortals dare not pry into divine artifacts.§r",
+  "item.tetra.scroll.omniscient.details": "Core · Pivot\nAllows the holder to invoke all 'scroll techniques' that exist or have ever existed in the world — whether forbidden lore from burned texts, divination rituals of lost civilizations, or future arts yet to be invented, all can be drawn from this scroll as if from a neighbor.\nIt does not provide answers, but rather 'the vision to see all answers.' In the holder's eyes, the underlying fabric of the world will appear; all things are no longer phenomena, but lines to be dissected and redrawn.\nAppearance · Brief\nThis scroll is neither silk nor paper; to touch it is to caress the void, and to gaze upon it is to see all phenomena flowing upon its surface.\nWhen first unrolled, it is silent, but once opened, countless whispers cascade from unknowable places, like the roar of celestial stars and planets compressed into a hum that mortal eardrums can barely endure.\nThe text upon it is not written, but woven from threads of causality; each stroke points to a truth either already hidden or not yet come to pass."
 }
